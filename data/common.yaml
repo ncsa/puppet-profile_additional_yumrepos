@@ -2,7 +2,7 @@
 lookup_options:
   profile_additional_yumrepos::repo_list:
     merge:
-      strategy: deep
-      knockout_prefix: '-'
+      strategy: "deep"
+      knockout_prefix: "-"
 
 profile_additional_yumrepos::repo_list: {}
