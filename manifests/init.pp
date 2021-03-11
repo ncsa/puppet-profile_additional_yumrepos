@@ -1,7 +1,5 @@
 # @summary Install additional yumrepos (specified in Hiera)
 #
-# Install additional yumrepos (specified in Hiera)
-#
 # @param repo_list Hash of (yumrepo configs) to create
 #   Hash key will be used as the yumrepo 'resource_title'
 #   Hash value must be a Hash of valid yumrepo attributes
