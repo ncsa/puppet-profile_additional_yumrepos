@@ -6,3 +6,5 @@ lookup_options:
       knockout_prefix: "-"
 
 profile_additional_yumrepos::repo_list: {}
+
+profile_additional_yumrepos::proxy_host:

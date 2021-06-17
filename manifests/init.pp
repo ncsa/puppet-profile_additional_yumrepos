@@ -1,10 +1,13 @@
-# @summary Install additional yumrepos (specified in Hiera)
+# @summary Install additional yumrepos (specified in Hiera) and control global yum.conf settings
 #
 # @param repo_list Hash of (yumrepo configs) to create
 #   Hash key will be used as the yumrepo 'resource_title'
 #   Hash value must be a Hash of valid yumrepo attributes
 #     If 'ensure' is not provided, it will default to 'present'
 #     If 'enabled' is not provided, it will default to true
+#
+# @param proxy_host
+#   String to use for Global yum proxy_host. Leave undefined for no proxy
 #
 # @example
 #   baseline_cfg::additional_yumrepos:repo_list:
@@ -18,6 +21,7 @@
 #   include baseline_cfg::additional_yumrepos
 class profile_additional_yumrepos (
     Hash $repo_list,
+    Optional[String] $proxy_host,
 ) {
     $defaults = {
       ensure  => present,
@@ -25,4 +29,10 @@ class profile_additional_yumrepos (
     }
 
     ensure_resources( 'yumrepo', $repo_list, $defaults )
+
+    if ($proxy_host) {
+      yum::config { 'proxy' :
+        ensure => "$proxy_host",
+      }
+    }
 }
