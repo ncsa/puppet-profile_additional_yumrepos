@@ -38,7 +38,7 @@ include baseline_cfg::additional_yumrepos
 The following parameters are available in the `profile_additional_yumrepos` class:
 
 * [`repo_list`](#repo_list)
-* [`proxy_host`](#proxy_host)
+* [`proxy_url`](#proxy_url)
 
 ##### <a name="repo_list"></a>`repo_list`
 
@@ -50,9 +50,9 @@ Hash value must be a Hash of valid yumrepo attributes
   If 'ensure' is not provided, it will default to 'present'
   If 'enabled' is not provided, it will default to true
 
-##### <a name="proxy_host"></a>`proxy_host`
+##### <a name="proxy_url"></a>`proxy_url`
 
 Data type: `Optional[String]`
 
-String to use for Global yum proxy_host. Leave undefined for no proxy
+String to use for Global yum proxy_url. Leave undefined for no proxy
 

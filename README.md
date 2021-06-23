@@ -15,6 +15,6 @@ Can also optionally be used to define a global proxy in /etc/yum.conf
  
 ### class profile_additional_yumrepos (
 -    Hash $repo_list,
--    Optional[String] $proxy_host,
+-    Optional[String] $proxy_url,
 
 [REFERENCE.md](REFERENCE.md)

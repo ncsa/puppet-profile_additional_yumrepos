@@ -6,8 +6,8 @@
 #     If 'ensure' is not provided, it will default to 'present'
 #     If 'enabled' is not provided, it will default to true
 #
-# @param proxy_host
-#   String to use for Global yum proxy_host. Leave undefined for no proxy
+# @param proxy_url
+#   String to use for Global yum proxy_url. Leave undefined for no proxy
 #
 # @example
 #   baseline_cfg::additional_yumrepos:repo_list:
@@ -21,7 +21,7 @@
 #   include baseline_cfg::additional_yumrepos
 class profile_additional_yumrepos (
     Hash $repo_list,
-    Optional[String] $proxy_host,
+    Optional[String] $proxy_url,
 ) {
     $defaults = {
       ensure  => present,
@@ -30,9 +30,9 @@ class profile_additional_yumrepos (
 
     ensure_resources( 'yumrepo', $repo_list, $defaults )
 
-    if ($proxy_host) {
+    if ($proxy_url) {
       yum::config { 'proxy' :
-        ensure => "$proxy_host",
+        ensure => "$proxy_url",
       }
     }
 }
