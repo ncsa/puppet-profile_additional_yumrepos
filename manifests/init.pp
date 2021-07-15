@@ -20,19 +20,22 @@
 # @example
 #   include baseline_cfg::additional_yumrepos
 class profile_additional_yumrepos (
-    Hash   $repo_list,
-    String $proxy_url,
+  Hash   $repo_list,
+  String $proxy_url,
 ) {
-    $defaults = {
-      ensure  => present,
-      enabled => true,
-    }
 
-    ensure_resources( 'yumrepo', $repo_list, $defaults )
+  include ::yum
 
-    if $proxy_url =~ String[1] {
-      yum::config { 'proxy' :
-        ensure => $proxy_url,
-      }
+  $defaults = {
+    ensure  => present,
+    enabled => true,
+  }
+
+  ensure_resources( 'yumrepo', $repo_list, $defaults )
+
+  if $proxy_url =~ String[1] {
+    yum::config { 'proxy' :
+      ensure => $proxy_url,
     }
+  }
 }
