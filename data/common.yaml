@@ -7,4 +7,4 @@ lookup_options:
 
 profile_additional_yumrepos::repo_list: {}
 
-profile_additional_yumrepos::proxy_url:
+profile_additional_yumrepos::proxy_url: ""
