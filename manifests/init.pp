@@ -30,7 +30,7 @@ class profile_additional_yumrepos (
 
     ensure_resources( 'yumrepo', $repo_list, $defaults )
 
-    if $proxy_url ~= String[1] {
+    if $proxy_url =~ String[1] {
       yum::config { 'proxy' :
         ensure => $proxy_url,
       }
